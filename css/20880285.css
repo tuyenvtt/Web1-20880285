@@ -122,3 +122,9 @@ footer {
 #menu-footer a.active {
     color: var(--web1-pink);
 }
+
+/* modal login */
+#formLogin button[type='submit'] {
+    background-color: var(--web1-blue);
+    color: white;
+}
