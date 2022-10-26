@@ -107,6 +107,10 @@ h1 {
     background-color: var(--web1-pink);
 }
 
+#about-us h4 {
+    color: black;
+}
+
 #formSignUp {
     border-style: dashed !important;
     border-color: rgba(0, 0, 0, 0.5) !important;
@@ -140,4 +144,21 @@ footer {
 #formLogin button[type='submit'] {
     background-color: var(--web1-blue);
     color: white;
+}
+
+/* testimonials */
+#testimonials {
+    background-color: var(--web1-pink);
+}
+
+#testimonials .col {
+    background: url('../images/quot.png') left top no-repeat;
+    padding-left: 3rem;
+}
+
+/* blogs */
+#blogs-categories li{
+    list-style-type: none;
+    background: url('../images/marker1.png') 0 0.25rem no-repeat;
+    padding: 0 0 0.75rem 1.5rem;
 }
