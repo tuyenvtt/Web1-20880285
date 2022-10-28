@@ -228,7 +228,7 @@
             let response = await fetch('verify.php', {
                 method: "POST",
                 headers: {
-                    'Content-type': 'application/json',
+                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
                 body: JSON.stringify({'g-token': token})
@@ -236,7 +236,8 @@
             if(response.status==200){
                 sendMail();
             }else{
-                let responseMessage = document.getElementById('responeMessage').innerHTML = 'Error: can not verify RECAPTCHA';
+                let responseMessage = document.getElementById('responeMessage');
+                responseMessage.innerHTML = 'Error: can not verify RECAPTCHA';
                 responseMessage.classList.remove();
                 responseMessage.classList.toggle('text-danger');
             }
