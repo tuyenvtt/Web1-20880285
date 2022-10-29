@@ -219,6 +219,8 @@
   <script src="js/map.js"></script>
 
   <script src="https://www.google.com/recaptcha/enterprise.js?render=6LduubwiAAAAAOB411ScaJH3_-1JqJUbqeL3bNkO"></script>
+
+  <script src="js/20880285.js"></script>
 <script>
     function onSubmit(e){
         e.preventDefault();
@@ -245,11 +247,41 @@
         });
     }
 
-    function sendMail(){
-        let responseMessage = document.getElementById('responseMessage');
-        responseMessage.innerHTML = 'OK';
-        responseMessage.classList.remove();
-        responseMessage.classList.toggle('text-success');
+    async function sendMail(){
+        try{
+            let token = await getAuthenticateToken('test', '1c3cr3@m');
+            let postData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('message').value,
+                messge: document.getElementById('message').value,
+                copy: document.getElementById('copy').value
+
+            }
+            let response = await fetch(`${AUTHENTICATE_API}/send`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': 'Bearer' + token
+                },
+                body: JSON.stringify(postData)
+            })
+            let result = await response.json();
+            if(response.status==200){
+                responseMessage.innerHTML = result.messge;
+                responseMessage.classList.remove();
+                responseMessage.classList.toggle('text-success');   
+            }else{
+                throw new Error(result.messge);
+            }
+        }catch(error){
+            let responseMessage = document.getElementById('responseMessage');
+            responseMessage.innerHTML = 'OK';
+            responseMessage.classList.remove();
+            responseMessage.classList.toggle('text-success');
+        }
+        
     }
 </script>
 </body>
