@@ -253,7 +253,7 @@
             let postData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
-                subject: document.getElementById('message').value,
+                subject: document.getElementById('subject').value,
                 messge: document.getElementById('message').value,
                 copy: document.getElementById('copy').value
 
@@ -268,7 +268,7 @@
                 body: JSON.stringify(postData)
             })
             let result = await response.json();
-            if(response.status==200){
+            if(response.status==200){ 
                 responseMessage.innerHTML = result.messge;
                 responseMessage.className = "text-primary";   
             }else{
