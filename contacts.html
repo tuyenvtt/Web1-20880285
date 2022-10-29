@@ -247,6 +247,7 @@
     }
 
     async function sendMail(){
+        let responseMessage =document.getElementById('responseMessage');
         try{
             let token = await getAuthenticateToken('test', '1c3cr3@m');
             let postData = {
@@ -274,7 +275,6 @@
                 throw new Error(result.messge);
             }
         }catch(error){
-            let responseMessage = document.getElementById('responseMessage');
             responseMessage.innerHTML = error;
             responseMessage.className = "text-danger";
         }
