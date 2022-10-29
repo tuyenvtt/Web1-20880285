@@ -132,7 +132,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div id="responseMessage" class="text-success"></div>
+                    <div id="responseMessage" class="text-primary"></div>
                 </div>
                 <div class="col">
                     <div class="text-end">
@@ -240,8 +240,7 @@
             }else{
                 let responseMessage = document.getElementById('responseMessage');
                 responseMessage.innerHTML = 'Error: can not verify RECAPTCHA';
-                responseMessage.classList.remove();
-                responseMessage.classList.toggle('text-danger');
+                responseMessage.className = "text-danger";
             }
         });
         });
@@ -270,16 +269,14 @@
             let result = await response.json();
             if(response.status==200){
                 responseMessage.innerHTML = result.messge;
-                responseMessage.classList.remove();
-                responseMessage.classList.toggle('text-success');   
+                responseMessage.className = "text-primary";   
             }else{
                 throw new Error(result.messge);
             }
         }catch(error){
             let responseMessage = document.getElementById('responseMessage');
-            responseMessage.innerHTML = 'OK';
-            responseMessage.classList.remove();
-            responseMessage.classList.toggle('text-success');
+            responseMessage.innerHTML = error;
+            responseMessage.className = "text-danger";
         }
         
     }
