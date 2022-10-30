@@ -72,6 +72,7 @@
   <!-- Banner small -->
   <section class="container-fluid" id="banner-small"></section>
 
+  <!-- Content -->
   <section class="container py-5">
     <div class="row">
         <div class="col-8" id="blogs">
@@ -159,7 +160,7 @@
         <h3>{{name}}</h3>
         <p class="text-black-50">by {{author}} in <a href="#" onclick="loadBlogs('blogs/categories/{{category.id}}')">{{category.name}}</a> on {{formatDate date}}. <a href="#" onclick="loadBlogDetails({{id}}, true)">Comments ({{comments.length}})</a></p>
         <img src="{{thumbpath}}" alt="{{name}}" class="float-start me-3 border rounded-4">
-        <p>{{summary}}</p>
+        <p class="text-black-50">{{summary}}</p>
         <a href="" class="btn btn-link readmore ps-0" onclick="loadBlogDetails({{id}})">Read more</a>
     </div>
     {{/each}}
@@ -196,7 +197,7 @@
         <h3>{{name}}</h3>
         <p>by {{author}} in {{category.name}} on {{formatDate date}}. <a href="#">Comments ({{comments.length}})</a></p>
         <img src="{{imagepath}}" alt="{{name}}" class="float-start rounded-4 mr-3">
-        <p>{{{description}}}</p>
+        <p class="text-black-50">{{{description}}}</p>
     </div>
     <div class="py-3">
         <h3>Leave your comments</h3>
@@ -282,7 +283,7 @@
     loadData('blogs-categories', 'blogs-categories-template', 'blogs-categories');
 
     async function loadBlogDetails(blogId, gotoComments = false){
-        await loadData(`blogs/${blogId}`, 'details-template', 'blogs');
+        await loadData(`blogs/categories/${blogId}`, 'details-template', 'blogs');
         if(gotoComments){
             window.location.href= "#comments";
         }
