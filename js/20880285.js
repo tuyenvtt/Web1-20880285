@@ -39,7 +39,7 @@ async function login(e){
         let token = await getAuthenticateToken(username, password);
         if(token){
             localStorage.setItem('token', token);
-            document.getElementsByClassName('btn-close')(0).click();
+            document.getElementsByClassName('btn-close')[0].click();
             displayControls();
         }
     }catch(error){
@@ -61,6 +61,11 @@ function displayControls(isLogin = true){
     for(let i =0; i<linkLogins.length; i++){
         linkLogins[i].style.display = displayLogin;
         linkLogouts[i].style.display = displayLogout;
+    }
+
+    let leaveComment = document.getElementById('leave-comment');
+    if(leaveComment){
+        leaveComment.style.display = displayLogout;
     }
 }
 
